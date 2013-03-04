@@ -11,3 +11,18 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+  padding-top: 80px;
+}
+
+input:required, textarea:required {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    border-color: #ccc !important;
+    color: #000 !important;
+}
+
+.form-inline {
+  margin-bottom: 15px;
+}
