@@ -19,6 +19,29 @@ Box.loadAutocomplete = function() {
   new google.maps.places.Autocomplete(input, options);
 };
 
+Box.loadUploader = function() {
+  new qq.FineUploader({
+    element: document.getElementById('uploader'),
+    request: { endpoint: '/images/new' },
+    callbacks: {
+      onComplete: function(id, fileName, response) {
+        if(response.success) {
+          Box.drawImage(response.url);
+        }
+      }
+    }
+  });
+};
+
+Box.drawImage = function(url) {
+  var preview = document.getElementById('preview'),
+      img = document.createElement('img');
+
+  img.src = url;
+
+  preview.appendChild(img);
+};
+
 Box.updateMap = function() {
   var address = Box.getInputAddress().value,
       img = document.createElement('img');

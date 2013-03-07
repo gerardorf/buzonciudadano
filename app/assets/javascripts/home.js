@@ -1,5 +1,6 @@
 (function(){
   Box.loadAutocomplete();
+  Box.loadUploader();
 
   $('#address').blur(function(event) {
     var value = event.target.value;
