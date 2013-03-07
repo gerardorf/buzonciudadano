@@ -1,9 +1,5 @@
 var Box = {};
 
-Box.getInputAddress = function() {
-  return document.getElementById('address')  
-};
-
 Box.loadAutocomplete = function() {
   var cityBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(39.502617, 151.1759),
@@ -17,6 +13,22 @@ Box.loadAutocomplete = function() {
       };
 
   new google.maps.places.Autocomplete(input, options);
+};
+
+Box.getInputAddress = function() {
+  return document.getElementById('address')  
+};
+
+Box.updateMap = function() {
+  var address = Box.getInputAddress().value,
+      img = document.createElement('img');
+
+  img.src = "http://maps.google.com/maps/api/staticmap?center=" + address +
+    "&zoom=16&size=609x250&maptype=roadmap&sensor=false&markers=color:blue|" + address;
+
+  $('#map').empty();
+  $('#map').append(img);
+  $('#map').show();
 };
 
 Box.loadUploader = function() {
@@ -40,16 +52,4 @@ Box.drawImage = function(url) {
   img.src = url;
 
   preview.appendChild(img);
-};
-
-Box.updateMap = function() {
-  var address = Box.getInputAddress().value,
-      img = document.createElement('img');
-
-  img.src = "http://maps.google.com/maps/api/staticmap?center=" + address +
-    "&zoom=16&size=609x250&maptype=roadmap&sensor=false&markers=color:blue|" + address;
-
-  $('#map').empty();
-  $('#map').append(img);
-  $('#map').show();
 };
