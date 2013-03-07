@@ -1,8 +1,6 @@
 Buzonciudadano::Application.routes.draw do
   post "images/new"
 
-  get "images/get"
-
   get "home/index"
 
   # The priority is based upon order of creation:

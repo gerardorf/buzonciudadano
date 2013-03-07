@@ -22,7 +22,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'carrierwave'
+# To use Cloudinary
 gem 'cloudinary'
 
 # To use ActiveModel has_secure_password
