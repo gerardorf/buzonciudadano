@@ -1,2 +1,10 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+(function(){
+  Box.loadAutocomplete();
+
+  $('#address').blur(function(event) {
+    var value = event.target.value;
+
+    if(value.length > 5)
+      Box.updateMap();
+  });
+}());
