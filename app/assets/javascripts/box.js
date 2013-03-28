@@ -46,10 +46,17 @@ Box.loadUploader = function() {
 };
 
 Box.drawImage = function(url) {
-  var preview = document.getElementById('preview'),
-      img = document.createElement('img');
+  var previewContainer = document.getElementById('preview'),
+      photoContainer = document.getElementById('images'),
+      img = document.createElement('img'),
+      input = document.createElement('input');
 
   img.src = url;
 
+  input.type = "hidden";
+  input.name = "photos[]";
+  input.value = url;
+
+  photoContainer.appendChild(input);
   preview.appendChild(img);
 };
