@@ -1,5 +1,5 @@
 <div class="row">
-  <form method="post" action="#">
+  <%= form_tag('/issue/create', :remote => true) do -%>
     <fieldset class="form-inline">
       <label for="fullname">Nombre y apellidos:</label>
       <input id="fullname" name="fullname" type="text" class="input-xxlarge"
@@ -25,7 +25,12 @@
     <div id="uploader"></div>
 
     <div id="preview"></div>
+    <input id="imageurl" name="imagesurl" type="text">
 
     <textarea name="text" class="text" placeholder="describe detalladamente tu sugerencia" required></textarea>
-  </form>
+
+    <%= submit_tag 'Save' %>
+<% end -%>
 </div>
+
+
