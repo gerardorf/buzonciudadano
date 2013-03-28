@@ -16,5 +16,11 @@ namespace :test do
         t.rspec_opts = " -c"
     end
 
+    desc "Run unit tests"
+    RSpec::Core::RakeTask.new(:integration) do |t|
+      t.pattern = FileList['test/integration/*.rb']
+        t.rspec_opts = " -c"
+    end
+
 end
 
