@@ -54,7 +54,7 @@ Box.drawImage = function(url) {
   img.src = url;
 
   input.type = "hidden";
-  input.name = "photos[]";
+  input.name = "images[]";
   input.value = url;
 
   photoContainer.appendChild(input);
