@@ -1,15 +1,9 @@
-
 class IssueDomain
+  attr_writer :repository
 
   def create(properties)
-
     issue = Issue.new(properties)
-    #check valid issue
-    #persist
-
-
+    @repository.save(issue)
     issue
   end
-
-
 end
