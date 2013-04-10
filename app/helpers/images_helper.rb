@@ -3,6 +3,9 @@ module ImagesHelper
   
   def upload
     filename = params[:qqfile]
+    
+    return if filename == nil
+
     extension =  get_extension(filename)
     enc_image = "data:image/" + extension + ";base64," + Base64.encode64(request.body.read)
     image = Cloudinary::Uploader.upload(enc_image)
