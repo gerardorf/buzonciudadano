@@ -13,7 +13,7 @@ describe 'IssueDomain' do
   it 'creates an issue' do
     issue = @domain.create({:text => 'a text'})
 
-    issue.to_hash[:identity].should_not be_nil
+    issue.to_hash[:text].should eql 'a text'
   end
 
   it 'saves an issue' do

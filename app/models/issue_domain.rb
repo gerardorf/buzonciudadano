@@ -3,7 +3,12 @@ class IssueDomain
 
   def create(properties)
     issue = Issue.new(properties)
-    @repository.save(issue)
+    get_repository.save(issue)
     issue
+  end
+
+  def get_repository
+    @repository = IssueRepo.new if @repository == nil
+    @repository
   end
 end

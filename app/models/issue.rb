@@ -12,7 +12,7 @@ class Issue
 
   def to_hash
 
-    { :identity => 'smthg',
+    {
       :text => @text,
       :summary => @summary,
       :fullname => @fullname,
