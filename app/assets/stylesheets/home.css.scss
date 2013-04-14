@@ -16,3 +16,30 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+
+#preview {
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 80px;
+    -moz-border-radius: 80px;
+    -webkit-border-radius: 80px;
+    margin-right: 10px;
+  }
+
+  img:last-child {
+    margin-right: 0;
+  }
+}
+
+#uploader {
+  margin-bottom: 10px;
+
+  .qq-upload-button {
+    background-color: #000;
+  }
+
+  .qq-upload-success {
+    background-color: #333;
+  }
+}

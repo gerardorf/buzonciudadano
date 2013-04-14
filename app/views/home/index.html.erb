@@ -14,24 +14,22 @@
 
     <fieldset class="form-inline">
       <label for="address">Dirección:</label>
-      <div class="input-append">
-        <input id="address" name="address" type="text" class="input-xxlarge"
-          placeholder="dirección de la incidencia" required>
-      </div>
+      <input id="address" name="address" type="text" class="input-xxlarge"
+        placeholder="dirección de la incidencia" required>
     </fieldset>
 
     <div id="map" class="map"></div>
-
-    <div id="uploader"></div>
-
-    <div id="preview"></div>
     
-    <fieldset id="images">
+    <fieldset class="form-inline">
+      <div id="uploader"></div>
+      <div id="preview"></div>
+      <div id="images"></div>
     </fieldset>
 
-    <textarea name="text" class="text" placeholder="describe detalladamente tu sugerencia" required></textarea>
+    <textarea name="text" class="text" placeholder="describe detalladamente tu sugerencia" required>
+    </textarea>
 
-    <%= submit_tag 'Save' %>
+    <%= submit_tag 'Save', :class => "btn btn-large" %>
 <% end -%>
 </div>
 
