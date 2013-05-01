@@ -1,21 +1,15 @@
 require 'rspec'
 require 'pg'
-require_relative '../../app/models/issue_repo'
+require_relative '../../app/models/issue_repository'
 require_relative '../../app/models/issue'
 
- describe 'IssueRepo' do
-  it 'saves an issue' do
+ describe IssueRepository do
+  it 'puts an issue' do
     conn = PG.connect( dbname: 'buzonciudadano_test', host: '127.0.0.1', port: 5432 )
-    repo = IssueRepo.new
-    repo.connection = conn
+    repo = described_class.new(conn)
 
-    issue = Issue.new({
-      :text => 'a text',
-      :summary => 'a summary',
-      :fullname => 'the name',
-      :address => 'an address',
-      :images => ['image one', 'image two']})
-    repo.save(issue)
+    issue = Issue.new('a text', 'a summary', 'the name', 'an address', ['image one', 'image two'])
+    repo.put(issue)
 
     result = conn.exec( "SELECT * FROM issues" )
     result.getvalue(0, 1).should eql 'a text'
