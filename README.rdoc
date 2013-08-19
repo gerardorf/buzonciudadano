@@ -1,5 +1,0 @@
-postgresql in ubuntu:
-
-sudo -u postgres psql
-CREATE USER buzonciudadano WITH PASSWORD 'buzon' CREATEUSER CREATEDB;
-
