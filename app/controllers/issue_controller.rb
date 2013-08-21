@@ -6,8 +6,12 @@ class IssueController < ApplicationController
     render json: { success: true, issue: issue_data }
   end
 
+  def summary
+    render "home/index"
+  end
+
   private
-  
+
   def issue_data
     make_issue_data(make_issue)
   end

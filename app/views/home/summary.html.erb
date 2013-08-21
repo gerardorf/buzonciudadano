@@ -1,0 +1,29 @@
+<div class="row">
+  <%= form_tag('/issue/summary') do -%>
+    <fieldset class="form-inline">
+      <label for="fullname">Nombre y apellidos:</label>
+      <input id="fullname" name="fullname" type="text" class="input-xxlarge"
+        placeholder="tu nombre y apellidos" required>
+    </fieldset>
+    <fieldset class="form-inline">
+      <label for="dni">DNI:</label>
+      <input id="dni" name="dni" type="text" class="input-medium"
+        placeholder="tu dni" required>
+    </fieldset>
+    <fieldset class="form-inline">
+      <label for="email">Email:</label>
+      <input id="email" name="email" type="email" class="input-medium"
+        placeholder="tuemail@example.com" required>
+    </fieldset>
+
+    <fieldset class="form-inline">
+      <label for="summary">Resumen:</label>
+      <input id="summary" name="summary" type="text" class="input-xxlarge"
+        placeholder="¿cuál es tu sugerencia? se específico" required>
+    </fieldset>
+
+    <%= submit_tag 'Siguiente', :class => "btn btn-large" %>
+<% end -%>
+</div>
+
+
