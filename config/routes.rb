@@ -2,7 +2,9 @@ Buzonciudadano::Application.routes.draw do
   post "images/new"
   post "issue/create"
 
+  post "issue/summary"
   get "home/index"
+  get "home/summary"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
