@@ -16,3 +16,7 @@ Additionaly, inside /etc/postgresql/9.2/main/postgresql.conf uncomment `listen_a
 `listen_addresses='*'`
 
 
+##install phppgadmin
+https://bdhacker.wordpress.com/2011/05/06/postgresql-phppgadmin-php5-ubuntu/
+`ln -s /usr/share/phppgadmin /var/www/phppgadmin`
+`ensure to allow remote conections in /etc/phppgadmin/apache.conf`
