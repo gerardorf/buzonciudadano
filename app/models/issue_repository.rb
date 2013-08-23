@@ -5,8 +5,9 @@ class IssueRepository
   end
 
   def put(issue)
+    images = issue.images && issue.images.join(',')
     @connection.exec(insert_query, [issue.text, issue.summary, issue.fullname,
-                                    issue.address, issue.images.join(',')])
+                                    issue.address, images])
   end
 
   private
