@@ -7,14 +7,14 @@ class IssueRepository
   def put(issue)
     images = issue.images && issue.images.join(',')
     @connection.exec(insert_query, [issue.text, issue.summary, issue.fullname,
-                                    issue.address, images])
+                                    issue.address, images, issue.dni, issue.email])
   end
 
   private
 
   def insert_query
-    'INSERT INTO issues (text, summary, fullname, address, images) VALUES
-    ($1, $2, $3, $4, $5)'
+    'INSERT INTO issues (text, summary, fullname, address, images, dni, email) VALUES
+    ($1, $2, $3, $4, $5, $6, $7)'
   end
 end
 

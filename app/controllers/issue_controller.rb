@@ -7,6 +7,12 @@ class IssueController < ApplicationController
   end
 
   def summary
+    @summary = params['summary']
+    @fullname = params['fullname']
+
+    @dni = params['dni']
+    @email = params['email']
+
     render "home/index"
   end
 
@@ -26,6 +32,6 @@ class IssueController < ApplicationController
 
   def make_issue_data(issue)
     {text: issue.text, summary: issue.summary, fullname: issue.fullname,
-     address: issue.address, images: issue.images}
+     address: issue.address, images: issue.images, dni: issue.dni, email: issue.email}
   end
 end

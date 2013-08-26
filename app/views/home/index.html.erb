@@ -2,13 +2,13 @@
   <%= form_tag('/issue/create', :remote => true) do -%>
     <fieldset class="form-inline">
       <label for="fullname">Nombre y apellidos:</label>
-      <input id="fullname" name="fullname" type="text" class="input-xxlarge"
+      <input id="fullname" name="fullname" type="text" class="input-xxlarge" value="<%= @fullname %>"
         placeholder="tu nombre y apellidos" required>
     </fieldset>
 
     <fieldset class="form-inline">
       <label for="summary">Resumen:</label>
-      <input id="summary" name="summary" type="text" class="input-xxlarge"
+      <input id="summary" name="summary" type="text" class="input-xxlarge" value="<%= @summary %>"
         placeholder="¿cuál es tu sugerencia? se específico" required>
     </fieldset>
 
@@ -18,8 +18,11 @@
         placeholder="dirección de la incidencia" required>
     </fieldset>
 
+    <input type="hidden" name="email" value="<%= @email %>">
+    <input type="hidden" name="dni" value="<%= @dni %>">
+
     <div id="map" class="map"></div>
-    
+
     <fieldset class="form-inline">
       <div id="uploader"></div>
       <div id="preview"></div>
