@@ -3,8 +3,8 @@ Buzonciudadano::Application.routes.draw do
   post "issue/create"
 
   post "issue/summary"
-  get "home/index"
-  get "home/summary"
+  get "buzon/resumen"
+  get "buzon/sugerencia"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

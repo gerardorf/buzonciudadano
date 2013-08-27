@@ -13,7 +13,7 @@ class IssueController < ApplicationController
     @dni = params['dni']
     @email = params['email']
 
-    render "home/index"
+    render "buzon/sugerencia"
   end
 
   private
