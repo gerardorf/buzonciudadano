@@ -26,3 +26,12 @@ input:required, textarea:required {
 .form-inline {
   margin-bottom: 15px;
 }
+
+.brand img {
+  height: 40px;
+}
+
+.container ul.nav {
+    margin-top: 10px;
+}
+
