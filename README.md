@@ -4,6 +4,11 @@ postgresql in ubuntu:
 
 `CREATE USER buzonciudadano WITH PASSWORD 'buzon' CREATEUSER CREATEDB;`
 
+`sudo -u postgres psql -U buzonciudadano template1`
+`CREATE DATABASE buzonciudadano_development`
+`CREATE DATABASE buzonciudadano_test`
+
+
 configure postgres:
 /etc/postgresql/9.2/main/pg_hba.conf
 

@@ -10,7 +10,7 @@ describe IssueService do
     expected_issue = an_issue
     repository.should_receive(:put).with(expected_issue)
 
-    expect(service.add(an_issue)).to eql(expected_issue)
+    service.add(an_issue)
   end
 
   private

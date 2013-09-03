@@ -5,7 +5,7 @@ require_relative '../../app/models/issue'
 
  describe IssueRepository do
   it 'puts an issue' do
-    conn = PG.connect( dbname: 'buzonciudadano_test', host: '127.0.0.1', port: 5432 )
+    conn = PG.connect( dbname: 'buzonciudadano_test', host: '127.0.0.1', port: 5432, user:'buzonciudadano', password: 'buzon' )
     repo = described_class.new(conn)
 
     issue = Issue.new('a text', 'a summary', 'the name', 'an address', ['image one', 'image two'])

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130826234000) do
+ActiveRecord::Schema.define(:version => 20130828220600) do
 
   create_table "issues", :force => true do |t|
     t.string "text"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130826234000) do
     t.string "images"
     t.string "dni"
     t.string "email"
+    t.string "uuid"
   end
 
 end
