@@ -10,6 +10,7 @@ class IssueService
               issue_request.images, issue_request.email, issue_request.dni)
 
     @repository.put(issue)
+    return issue
   end
 end
 

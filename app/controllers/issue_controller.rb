@@ -23,7 +23,9 @@ class IssueController < ApplicationController
   end
 
   def make_issue
-    IssueService.new.add(issue_request)
+    new_issue = IssueService.new.add(issue_request)
+    IssueMailer.new_issue(new_issue.email, new_issue.fullname,new_issue.uuid).deliver
+    return new_issue
   end
 
   def issue_request

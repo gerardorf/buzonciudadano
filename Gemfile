@@ -25,9 +25,12 @@ gem 'jquery-rails'
 # To use Cloudinary
 gem 'cloudinary'
 
+# To use Sendgrid
+gem 'mail'
 
 group :test do
   gem "rspec"
+  gem "mocha"
 end
 
 
