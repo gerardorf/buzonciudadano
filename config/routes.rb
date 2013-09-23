@@ -2,9 +2,11 @@ Buzonciudadano::Application.routes.draw do
   post "images/new"
   post "issue/create"
 
-  post "issue/summary"
+  post 'sugerencias/resumen', to: 'issue#summary'
+
   get "buzon/resumen"
   get "buzon/sugerencia"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
