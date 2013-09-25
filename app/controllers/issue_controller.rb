@@ -16,6 +16,15 @@ class IssueController < ApplicationController
     render "buzon/sugerencia"
   end
 
+  def validate
+    uuid = params[:uuid]
+
+    IssueService.new.validate(uuid)
+
+    #render thank you
+
+  end
+
   private
 
   def issue_data

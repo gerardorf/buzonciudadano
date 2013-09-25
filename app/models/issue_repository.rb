@@ -10,6 +10,16 @@ class IssueRepository
                                     issue.address, images, issue.dni, issue.email, issue.uuid])
   end
 
+  def find_by_uuid(uuid)
+
+
+      result_set = @connection.exec('select * from issues where uuid=$1', [uuid])
+
+      puts result_set.to_a.to_s
+
+
+  end
+
   private
 
   def insert_query

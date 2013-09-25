@@ -20,4 +20,21 @@ require_relative '../../app/models/issue'
 
     conn.exec("DELETE FROM issues")
   end
+
+
+  # it 'finds an issue by its uuid' do
+  #   conn = PG.connect( dbname: 'buzonciudadano_test', host: '127.0.0.1', port: 5432, user:'buzonciudadano', password: 'buzon' )
+  #   repo = described_class.new(conn)
+
+  #   issue = Issue.new('a text', 'a summary', 'the name', 'an address', ['image one', 'image two'])
+  #   repo.put(issue)
+  #   something is wrong with issue.uuid, it generates a new one everytime
+  #   found_issue = repo.find_by_uuid(issue.uuid)
+
+  #   expect(issue.uuid).to eq(found_issue.uuid)
+
+  #   conn.exec("DELETE FROM issues")
+  # end
+
+
 end

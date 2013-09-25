@@ -12,5 +12,13 @@ class IssueService
     @repository.put(issue)
     return issue
   end
+
+  def validate(unique_id)
+    issue = @repository.find_by_uuid(unique_id)
+
+    !issue.nil?
+  end
+
+
 end
 
