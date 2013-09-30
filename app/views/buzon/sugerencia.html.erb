@@ -1,27 +1,42 @@
-<div class="row">
-  <%= form_tag('/issue/create', :remote => true) do -%>
-    <fieldset class="form-inline">
-      <label for="fullname">Nombre y apellidos:</label>
-      <input id="fullname" name="fullname" type="text" class="input-xxlarge" value="<%= @fullname %>"
-        placeholder="tu nombre y apellidos" required>
-    </fieldset>
 
-    <fieldset class="form-inline">
-      <label for="summary">Resumen:</label>
-      <input id="summary" name="summary" type="text" class="input-xxlarge" value="<%= @summary %>"
-        placeholder="¿cuál es tu sugerencia? se específico" required>
-    </fieldset>
+<%= form_tag('/issue/create', :remote => true) do -%>
 
+  <ul class="breadcrumb">
+  <li>Resumen <span class="divider"> &gt; </span></li>
+  <li class="active"> Descripción <span class="divider"> &gt; </span></li>
+  <li>Final</li>
+  </ul>
+
+  <input type="hidden" name="fullname" value="<%= @fullname %>">
+  <input type="hidden" name="email" value="<%= @email %>">
+  <input type="hidden" name="dni" value="<%= @dni %>">
+  <input type="hidden" name="summary" value="<%= @summary %>">
+
+  <div class="row-fluid">
+
+    <div class="well well-small">
+      <%= @summary %>
+    </div>
+
+  <div class="row-fluid">
     <fieldset class="form-inline">
-      <label for="address">Dirección:</label>
+      <legend> Dirección </legend>
+      <span class="help-block"> Por favor se específico para que atraiga más atención</span>
       <input id="address" name="address" type="text" class="input-xxlarge"
         placeholder="dirección de la incidencia" required>
     </fieldset>
+  </div>
 
-    <input type="hidden" name="email" value="<%= @email %>">
-    <input type="hidden" name="dni" value="<%= @dni %>">
+  <br/>
 
-    <div id="map" class="map"></div>
+  <div class="row-fluid">
+    <div class="offset1">
+      <div id="map" class="map"></div>
+    </div>
+  </div>
+
+
+  <div class="row-fluid">
 
     <fieldset class="form-inline">
       <div id="uploader"></div>
@@ -29,11 +44,21 @@
       <div id="images"></div>
     </fieldset>
 
+  </div>
+
+  <div class="row-fluid">
+    <legend> Descripción </legend>
     <textarea name="text" class="text" placeholder="describe detalladamente tu sugerencia" required>
     </textarea>
 
-    <%= submit_tag 'Save', :class => "btn btn-large" %>
+  </div>
+
+
+  <div class="row-fluid">
+    <div class="offset5">
+      <%= submit_tag 'Save', :class => "btn btn-large btn-warning" %>
+    </div>
+  </div>
 <% end -%>
-</div>
 
 
