@@ -6,7 +6,7 @@ env:
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test:unit test:functionals test:integration
 before_script:
-  - psql -c "CREATE USER buzonciudadano WITH PASSWORD 'buzon';" -U postgres
+  - psql -c "CREATE USER buzonciudadano WITH PASSWORD 'buzon' CREATEUSER CREATEDB;" -U postgres
   - psql -c 'create database buzonciudadano_test' -U buzonciudadano
 notifications:
   email:
