@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/desarrollolocal/buzonciudadano.png?branch=master)](https://travis-ci.org/desarrollolocal/buzonciudadano)
+
 postgresql in ubuntu:
 
 `sudo -u postgres psql`

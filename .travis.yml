@@ -8,3 +8,7 @@ script:
 before_script:
   - psql -c "CREATE USER buzonciudadano WITH PASSWORD 'buzon';" -U postgres
   - psql -c 'create database buzonciudadano_test' -U buzonciudadano
+notifications:
+  email:
+    - jorge@becodemyfriend.com
+    - mike@becodemyfriend.com
