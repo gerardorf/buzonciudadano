@@ -11,13 +11,12 @@ class IssueRepository
   end
 
   def find_by_uuid(uuid)
+   result_set = @connection.exec('select * from issues where uuid=$1', 
+     [uuid])
 
-
-      result_set = @connection.exec('select * from issues where uuid=$1', [uuid])
-
-      puts result_set.to_a.to_s
-
-
+   
+   return NullIssue.new if result_set.ntuples == 0
+   Issue.new.from_map(result_set[0])
   end
 
   private

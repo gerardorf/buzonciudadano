@@ -4,9 +4,15 @@ require_relative '../../app/models/issue_repository'
 require_relative '../../app/models/issue'
 
  describe IssueRepository do
+
+  let(:conn){ conn = PG.connect( dbname: 'buzonciudadano_test', 
+                host: '127.0.0.1', port: 5432, user:'buzonciudadano', 
+                password: 'buzon' )}  
+  let(:repo){ described_class.new(conn) }
+
+  after(:each){ conn.exec("DELETE FROM issues") }
+
   it 'puts an issue' do
-    conn = PG.connect( dbname: 'buzonciudadano_test', host: '127.0.0.1', port: 5432, user:'buzonciudadano', password: 'buzon' )
-    repo = described_class.new(conn)
 
     issue = Issue.new('a text', 'a summary', 'the name', 'an address', ['image one', 'image two'])
     repo.put(issue)
@@ -18,23 +24,22 @@ require_relative '../../app/models/issue'
     result.getvalue(0, 4).should eql 'an address'
     result.getvalue(0, 5).should eql 'image one,image two'
 
-    conn.exec("DELETE FROM issues")
   end
 
+  it 'finds an issue by its uuid' do
+    issue = Issue.new('a text', 'a summary', 'the name', 
+      'an address', ['image one', 'image two'])
+    repo.put(issue)
 
-  # it 'finds an issue by its uuid' do
-  #   conn = PG.connect( dbname: 'buzonciudadano_test', host: '127.0.0.1', port: 5432, user:'buzonciudadano', password: 'buzon' )
-  #   repo = described_class.new(conn)
+    found_issue = repo.find_by_uuid(issue.uuid)
 
-  #   issue = Issue.new('a text', 'a summary', 'the name', 'an address', ['image one', 'image two'])
-  #   repo.put(issue)
-  #   something is wrong with issue.uuid, it generates a new one everytime
-  #   found_issue = repo.find_by_uuid(issue.uuid)
+    expect(issue.uuid).to eq(found_issue.uuid)
+  end
 
-  #   expect(issue.uuid).to eq(found_issue.uuid)
+  it 'doesnt find an issue by its uuid' do
+    found_issue = repo.find_by_uuid('an uuid')
 
-  #   conn.exec("DELETE FROM issues")
-  # end
-
+    expect(found_issue.uuid).to eq('')
+  end
 
 end
