@@ -1,4 +1,6 @@
 class IssueMailer < ActionMailer::Base
+  default :from => 'elbuzondelciudadano@gmail.com'
+
 
   def new_issue(to, user_name, uuid)
     @user = to
