@@ -29,8 +29,8 @@ gem 'cloudinary'
 # To use Sendgrid
 gem 'mail'
 
+gem "rspec"
 group :test do
-  gem "rspec"
   gem "mocha"
 end
 
