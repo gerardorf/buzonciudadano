@@ -2,10 +2,10 @@ require 'securerandom'
 
 class Issue
 
-  attr_accessor :text, :summary, :fullname, :address, :images, :email, :dni, :uuid
+  attr_accessor :text, :summary, :fullname, :address, :images, :email, :dni, :uuid, :created_at
 
   def initialize(text, summary, fullname, address, images, email,
-    dni, uuid=SecureRandom.uuid, confirmed = false)
+    dni, uuid=SecureRandom.uuid, confirmed = false, created_at=Time.new)
     @text = text
     @summary = summary
     @fullname = fullname
@@ -15,6 +15,7 @@ class Issue
     @dni = dni
     @uuid = uuid
     @confirmed = confirmed
+    @created_at = created_at
   end
 
   def confirmed?; @confirmed end
@@ -22,7 +23,7 @@ class Issue
   def self.from_map(a_map)
     Issue.new(a_map['text'], a_map['summary'], a_map['fullname'],
       a_map['address'], a_map['images'], a_map['email'], a_map['dni'],
-      a_map['uuid'], a_map['confirmed'])
+      a_map['uuid'], a_map['confirmed'], a_map['created_at'])
   end
 
 end

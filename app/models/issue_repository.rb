@@ -7,7 +7,8 @@ class IssueRepository
   def put(issue)
     images = issue.images && issue.images.join(',')
     @connection.exec(insert_query, [issue.text, issue.summary, issue.fullname,
-                                    issue.address, images, issue.dni, issue.email, issue.uuid])
+                                    issue.address, images, issue.dni, issue.email, issue.uuid,
+                                    issue.created_at])
   end
 
   def find_by_uuid(uuid)
@@ -27,8 +28,8 @@ class IssueRepository
   private
 
   def insert_query
-    'INSERT INTO issues (text, summary, fullname, address, images, dni, email, uuid) VALUES
-    ($1, $2, $3, $4, $5, $6, $7, $8)'
+    'INSERT INTO issues (text, summary, fullname, address, images, dni, email, uuid, created_at) VALUES
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9)'
   end
 end
 
