@@ -1,4 +1,5 @@
 require 'rspec'
+require 'ostruct'
 require_relative '../../app/models/issue'
 require_relative '../../app/models/issue_service'
 
@@ -7,8 +8,7 @@ describe IssueService do
   let(:service) { described_class.new(repository) }
 
   it 'adds an issue' do
-    expected_issue = an_issue
-    repository.should_receive(:put).with(expected_issue)
+    repository.should_receive(:put).with(an_instance_of(Issue))
 
     service.add(an_issue)
   end
@@ -23,6 +23,7 @@ describe IssueService do
   private
 
   def an_issue
-    Issue.new('a text', 'a summary', 'fullname', 'address', [])
+    OpenStruct.new( {text: 'a text', summary: 'a summary', fullname: 'fullname',
+     address: 'address', images: [], dni: nil, email: nil})
   end
 end

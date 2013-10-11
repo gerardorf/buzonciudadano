@@ -14,7 +14,7 @@ require_relative '../../app/models/issue'
 
   it 'puts' do
 
-    issue = Issue.new('a text', 'a summary', 'the name', 'an address', ['image one', 'image two'])
+    issue = Issue.new('a text', 'a summary', 'the name', 'an address', ['image one', 'image two'], nil, nil)
     repo.put(issue)
 
     result = conn.exec( "SELECT * FROM issues" )
@@ -28,7 +28,7 @@ require_relative '../../app/models/issue'
 
   it 'finds by uuid' do
     issue = Issue.new('a text', 'a summary', 'the name',
-      'an address', ['image one', 'image two'])
+      'an address', ['image one', 'image two'], nil, nil)
     repo.put(issue)
 
     found_issue = repo.find_by_uuid(issue.uuid)
@@ -44,7 +44,7 @@ require_relative '../../app/models/issue'
 
   it 'validates' do
     issue = Issue.new('a text', 'a summary', 'the name',
-      'an address', ['image one', 'image two'])
+      'an address', ['image one', 'image two'], nil, nil)
     repo.put(issue)
 
     expect(issue.confirmed?).to be_false

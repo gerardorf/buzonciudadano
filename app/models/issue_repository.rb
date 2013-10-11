@@ -16,7 +16,7 @@ class IssueRepository
 
 
    return NullIssue.new if result_set.ntuples == 0
-   Issue.new.from_map(result_set[0])
+   Issue.from_map(result_set[0])
   end
 
   def confirm(issue)
