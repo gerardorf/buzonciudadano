@@ -7,7 +7,7 @@ Buzonciudadano::Application.routes.draw do
   get "buzon/resumen"
   get "buzon/sugerencia"
 
-  match 'issue/validate/:uuid' => 'issue#validate', via: [:get]
+  match 'issue/confirm/:uuid' => 'issue#confirm', via: [:get]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

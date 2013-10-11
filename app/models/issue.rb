@@ -1,11 +1,16 @@
 require 'securerandom'
 
-class Issue < 
+class Issue <
   Struct.new(:text, :summary, :fullname, :address, :images, :email, :dni)
 
   def uuid
     @uuid ||= SecureRandom.uuid
     @uuid
+  end
+
+  def confirmed?
+    @confirmed ||= false
+    @confirmed
   end
 
   def from_map(a_map)
@@ -17,7 +22,8 @@ class Issue <
     @email = a_map['email']
     @dni = a_map['dni']
     @uuid = a_map['uuid']
-    
+    @confirmed = a_map['confirmed']
+
     self
   end
 
@@ -27,6 +33,6 @@ class NullIssue < Issue
 
   def uuid
    ''
-  end  
+  end
 
 end

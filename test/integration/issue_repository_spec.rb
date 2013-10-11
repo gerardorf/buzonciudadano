@@ -5,14 +5,14 @@ require_relative '../../app/models/issue'
 
  describe IssueRepository do
 
-  let(:conn){ conn = PG.connect( dbname: 'buzonciudadano_test', 
-                host: '127.0.0.1', port: 5432, user:'buzonciudadano', 
-                password: 'buzon' )}  
+  let(:conn){ conn = PG.connect( dbname: 'buzonciudadano_test',
+                host: '127.0.0.1', port: 5432, user:'buzonciudadano',
+                password: 'buzon' )}
   let(:repo){ described_class.new(conn) }
 
   after(:each){ conn.exec("DELETE FROM issues") }
 
-  it 'puts an issue' do
+  it 'puts' do
 
     issue = Issue.new('a text', 'a summary', 'the name', 'an address', ['image one', 'image two'])
     repo.put(issue)
@@ -26,8 +26,8 @@ require_relative '../../app/models/issue'
 
   end
 
-  it 'finds an issue by its uuid' do
-    issue = Issue.new('a text', 'a summary', 'the name', 
+  it 'finds by uuid' do
+    issue = Issue.new('a text', 'a summary', 'the name',
       'an address', ['image one', 'image two'])
     repo.put(issue)
 
@@ -36,10 +36,23 @@ require_relative '../../app/models/issue'
     expect(issue.uuid).to eq(found_issue.uuid)
   end
 
-  it 'doesnt find an issue by its uuid' do
+  it 'fails at finding by uuid' do
     found_issue = repo.find_by_uuid('an uuid')
 
     expect(found_issue.uuid).to eq('')
+  end
+
+  it 'validates' do
+    issue = Issue.new('a text', 'a summary', 'the name',
+      'an address', ['image one', 'image two'])
+    repo.put(issue)
+
+    expect(issue.confirmed?).to be_false
+
+    repo.confirm(issue)
+
+    confirmed_issue = repo.find_by_uuid(issue.uuid)
+    expect(confirmed_issue.confirmed?).to be_true
   end
 
 end

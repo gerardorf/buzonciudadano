@@ -4,7 +4,7 @@ class IssueMailer < ActionMailer::Base
 
   def new_issue(to, user_name, uuid)
     @user = to
-    @url  = 'http://localhost:3000/buzon/resumen/'+uuid
+    @url  = 'http://buzon:3000/issue/confirm/'+uuid
     @user_name = user_name
     mail(to: @user, subject: 'Welcome to My Awesome Site')
   end

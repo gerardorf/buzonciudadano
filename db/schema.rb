@@ -11,17 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828220600) do
+ActiveRecord::Schema.define(:version => 20131011094600) do
 
   create_table "issues", :force => true do |t|
-    t.string "text"
-    t.string "summary"
-    t.string "fullname"
-    t.string "address"
-    t.string "images"
-    t.string "dni"
-    t.string "email"
-    t.string "uuid"
+    t.string  "text"
+    t.string  "summary"
+    t.string  "fullname"
+    t.string  "address"
+    t.string  "images"
+    t.string  "dni"
+    t.string  "email"
+    t.string  "uuid"
+    t.boolean "confirmed"
   end
 
 end

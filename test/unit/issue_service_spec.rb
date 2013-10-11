@@ -13,16 +13,11 @@ describe IssueService do
     service.add(an_issue)
   end
 
-  it 'validates an issue' do
-    repository.should_receive(:find_by_uuid).with('a unique id').and_return("an issue")
+  it 'confirms an issue' do
+    repository.should_receive(:find_by_uuid).with('a unique id').and_return('an issue')
+    repository.should_receive(:confirm).with('an issue')
 
-    expect(service.validate('a unique id')).to be_true
-  end
-
-  it 'fail at validating an issue' do
-    repository.should_receive(:find_by_uuid).with('an invalid id').and_return(nil)
-
-    expect(service.validate('an invalid id')).to be_false
+    service.confirm('a unique id')
   end
 
   private
