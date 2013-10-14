@@ -1,4 +1,6 @@
 Buzonciudadano::Application.routes.draw do
+  root :to => 'buzon#resumen'
+
   post "images/new"
   post "issue/create"
 
@@ -6,6 +8,7 @@ Buzonciudadano::Application.routes.draw do
 
   get "buzon/resumen"
   get "buzon/sugerencia"
+
 
   match 'issue/confirm/:uuid' => 'issue#confirm', via: [:get]
 
