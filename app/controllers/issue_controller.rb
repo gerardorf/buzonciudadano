@@ -22,6 +22,17 @@ class IssueController < ApplicationController
     render "buzon/thanksforconfirm"
   end
 
+  def wall
+
+    @issues = [
+      Issue.from_map({"summary"=>'da text', "created_at"=> Time.new, "images"=> [], "address"=>'the adress'})
+    ]
+
+    render "buzon/muro"
+  end
+
+
+
   private
 
   def issue_data
