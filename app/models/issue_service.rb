@@ -11,8 +11,8 @@ class IssueService
     issue
   end
 
-  def confirm(unique_id)
-    issue = @issue_repository.find_by_uuid(unique_id)
+  def confirm(uuid)
+    issue = @issue_repository.find_by_uuid(uuid)
     @issue_repository.confirm(issue)
   end
 end
