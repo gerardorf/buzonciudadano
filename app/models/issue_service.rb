@@ -1,20 +1,18 @@
 class IssueService
 
   def initialize(repository=IssueRepository.new)
-    @issues = repository
+    @issue_repository = repository
   end
 
-  def add(issue_request)
-    issue = Issue.new(issue_request.text, issue_request.summary,
-              issue_request.fullname, issue_request.address,
-              issue_request.images, issue_request.email, issue_request.dni)
-
-    @issues.put(issue)
-    return issue
+  def add(issue_data)
+    issue = Issue.new(issue_data.text, issue_data.summary, issue_data.fullname,
+      issue_data.address, issue_data.images, issue_data.email, issue_data.dni)
+    @issue_repository.put(issue)
+    issue
   end
 
   def confirm(unique_id)
-    issue = @issues.find_by_uuid(unique_id)
-    @issues.confirm(issue)
+    issue = @issue_repository.find_by_uuid(unique_id)
+    @issue_repository.confirm(issue)
   end
 end
