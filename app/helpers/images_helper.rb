@@ -1,9 +1,9 @@
 module ImagesHelper
   include Cloudinary
-  
+
   def upload
     filename = params[:qqfile]
-    
+
     return if filename == nil
 
     extension =  get_extension(filename)

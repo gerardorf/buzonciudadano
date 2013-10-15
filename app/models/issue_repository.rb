@@ -15,7 +15,6 @@ class IssueRepository
    result_set = @connection.exec('select * from issues where uuid=$1',
      [uuid])
 
-
    return NullIssue.new if result_set.ntuples == 0
    Issue.from_map(result_set[0])
   end
@@ -32,4 +31,3 @@ class IssueRepository
     ($1, $2, $3, $4, $5, $6, $7, $8, $9)'
   end
 end
-

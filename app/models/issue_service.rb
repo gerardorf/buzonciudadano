@@ -17,7 +17,4 @@ class IssueService
     issue = @issues.find_by_uuid(unique_id)
     @issues.confirm(issue)
   end
-
-
 end
-

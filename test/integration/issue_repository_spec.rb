@@ -3,8 +3,7 @@ require 'pg'
 require_relative '../../app/models/issue_repository'
 require_relative '../../app/models/issue'
 
- describe IssueRepository do
-
+describe IssueRepository do
   let(:conn){ conn = PG.connect( dbname: 'buzonciudadano_test',
                 host: '127.0.0.1', port: 5432, user:'buzonciudadano',
                 password: 'buzon' )}
@@ -13,7 +12,6 @@ require_relative '../../app/models/issue'
   after(:each){ conn.exec("DELETE FROM issues") }
 
   it 'puts' do
-
     issue = Issue.new('a text', 'a summary', 'the name', 'an address', ['image one', 'image two'], nil, nil)
     repo.put(issue)
 
@@ -54,5 +52,4 @@ require_relative '../../app/models/issue'
     confirmed_issue = repo.find_by_uuid(issue.uuid)
     expect(confirmed_issue.confirmed?).to be_true
   end
-
 end
