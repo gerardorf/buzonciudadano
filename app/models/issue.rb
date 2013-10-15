@@ -1,10 +1,11 @@
 require 'securerandom'
 
 class Issue
-  attr_accessor :text, :summary, :fullname, :address, :images, :email, :dni, :uuid, :created_at
+  attr_accessor :text, :summary, :fullname, :address, :images, :email,
+    :dni, :uuid, :created_at
 
   def initialize(text, summary, fullname, address, images, email,
-    dni, uuid=SecureRandom.uuid, confirmed = false, created_at=Time.new)
+    dni, uuid = SecureRandom.uuid, confirmed = false, created_at = Time.new)
     @text = text
     @summary = summary
     @fullname = fullname
