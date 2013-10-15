@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   include ImagesHelper
 
   def new
-    url = upload
-    render :json => { :url => url, :success => true }
+    image_url = upload_image
+    render :json => { :url => image_url, :success => true }
   end
 end
