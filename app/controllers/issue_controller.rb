@@ -8,10 +8,10 @@ class IssueController < ApplicationController
   end
 
   def summary
-    @summary = params['summary']
+    @summary  = params['summary']
     @fullname = params['fullname']
-    @dni = params['dni']
-    @email = params['email']
+    @dni      = params['dni']
+    @email    = params['email']
 
     render 'buzon/sugerencia'
   end

@@ -12,7 +12,8 @@ describe IssueRepository do
   after(:each){ conn.exec("DELETE FROM issues") }
 
   it 'puts' do
-    issue = Issue.new('a text', 'a summary', 'the name', 'an address', ['image one', 'image two'], nil, nil)
+    issue = Issue.new('a text', 'a summary', 'the name',
+                      'an address', ['image one', 'image two'], nil, nil)
     repo.put(issue)
 
     result = conn.exec( "SELECT * FROM issues" )
