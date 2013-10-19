@@ -1,19 +1,24 @@
 module ImagesHelper
   include Cloudinary
-  
-  def upload
-    filename = params[:qqfile]
-    
-    return if filename == nil
 
-    extension =  get_extension(filename)
-    enc_image = "data:image/" + extension + ";base64," + Base64.encode64(request.body.read)
-    image = Cloudinary::Uploader.upload(enc_image)
-
+  def upload_image
+    image = Cloudinary::Uploader.upload(encrypted_image)
     image["url"]
   end
 
-  def get_extension(filename)
+  private
+
+  def encrypted_image
+    "data:image/" + extension + ";base64," + Base64.encode64(request.body.read)
+  end
+
+  def extension
+    filename = params[:qqfile]
+    assert_valid_filename(filename)
     filename.split('.').last
+  end
+
+  def assert_valid_filename(filename)
+    raise "invalid image" if filename.nil?
   end
 end

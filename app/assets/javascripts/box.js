@@ -16,7 +16,7 @@ Box.loadAutocomplete = function() {
 };
 
 Box.getInputAddress = function() {
-  return document.getElementById('address')  
+  return document.getElementById('address');
 };
 
 Box.updateMap = function() {

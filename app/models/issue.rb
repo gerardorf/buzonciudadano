@@ -1,11 +1,11 @@
 require 'securerandom'
 
 class Issue
-
-  attr_accessor :text, :summary, :fullname, :address, :images, :email, :dni, :uuid, :created_at
+  attr_accessor :text, :summary, :fullname, :address, :images, :email,
+    :dni, :uuid, :created_at
 
   def initialize(text, summary, fullname, address, images, email,
-    dni, uuid=SecureRandom.uuid, confirmed = false, created_at=Time.new)
+    dni, uuid = SecureRandom.uuid, confirmed = false, created_at = Time.new)
     @text = text
     @summary = summary
     @fullname = fullname
@@ -25,7 +25,6 @@ class Issue
       a_map['address'], a_map['images'], a_map['email'], a_map['dni'],
       a_map['uuid'], a_map['confirmed'], a_map['created_at'])
   end
-
 end
 
 class NullIssue < Issue

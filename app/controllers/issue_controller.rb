@@ -3,53 +3,41 @@ require 'issue_service'
 
 class IssueController < ApplicationController
   def create
-    render json: { success: true, issue: issue_data }
+    issue = make_issue(params)
+    render json: { success: true, issue: get_hash_from(issue) }
   end
 
   def summary
-    @summary = params['summary']
+    @summary  = params['summary']
     @fullname = params['fullname']
+    @dni      = params['dni']
+    @email    = params['email']
 
-    @dni = params['dni']
-    @email = params['email']
-
-    render "buzon/sugerencia"
+    render 'buzon/sugerencia'
   end
 
   def confirm
     IssueService.new.confirm(params[:uuid])
 
-    render "buzon/thanksforconfirm"
+    render 'buzon/thanksforconfirm'
   end
 
   def wall
+    @issues = [Issue.from_map({summary: 'da text', created_at: Time.new,
+                               images: [], address: 'the adress'})]
 
-    @issues = [
-      Issue.from_map({"summary"=>'da text', "created_at"=> Time.new, "images"=> [], "address"=>'the adress'})
-    ]
-
-    render "buzon/muro"
+    render 'buzon/muro'
   end
-
-
 
   private
 
-  def issue_data
-    make_issue_data(make_issue)
+  def make_issue(params)
+    issue = IssueService.new.add(OpenStruct.new(params))
+    IssueMailer.new_issue(issue.email, issue.fullname, issue.uuid).deliver
+    issue
   end
 
-  def make_issue
-    new_issue = IssueService.new.add(issue_request)
-    IssueMailer.new_issue(new_issue.email, new_issue.fullname,new_issue.uuid).deliver
-    return new_issue
-  end
-
-  def issue_request
-    OpenStruct.new(params)
-  end
-
-  def make_issue_data(issue)
+  def get_hash_from(issue)
     {text: issue.text, summary: issue.summary, fullname: issue.fullname,
      address: issue.address, images: issue.images, dni: issue.dni, email: issue.email}
   end

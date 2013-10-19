@@ -2,7 +2,7 @@
   Box.loadAutocomplete();
   Box.loadUploader();
 
-  Box.getInputAddress().value = "Alboraya"
+  Box.getInputAddress().value = "Alboraya";
   Box.updateMap();
 
   $('#address').blur(function(event) {
